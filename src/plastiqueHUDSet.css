@@ -1,0 +1,168 @@
+/***********************************
+FlexInc. 2011
+http://www.loziosecchi.it/flex_inc
+http://flashden.net/user/loziosecchi
+http://twitter.com//loziosecchi
+***********************************/
+
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace skins "flexInc.plastique.skins.*";
+@namespace spark "spark.skins.spark.*";
+
+@font-face
+{
+	src: url("assets/fonts/comfortaa/Comfortaa-Regular.ttf");
+	fontFamily: Comfortaa;
+	fontStyle: normal;
+	fontWeight: normal;
+	embed-as-cff: true;
+}
+
+@font-face
+{
+	src: url("assets/fonts/comfortaa/Comfortaa-Bold.ttf");
+	fontFamily: Comfortaa;
+	fontStyle: normal;
+	fontWeight: bold;
+	embed-as-cff: true;
+}
+
+s|Application
+{
+	color: #dedede;
+	fontFamily: Comfortaa;
+	fontSize: 16;
+	focusedTextSelectionColor: #757575;
+	chromeColor: #efefef;
+	focusColor: #ffffff;
+	symbolColor: #ababab;
+}
+
+s|Button
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.ButtonSkin");
+}
+
+s|ButtonBar
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.ButtonBarSkin");
+}
+
+s|CheckBox
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.CheckBoxSkin");
+}
+
+s|ComboBox
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.ComboBoxSkin");
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	paddingBottom: 7;
+	selectionColor: #555555;
+	rollOverColor: #686868;
+}
+
+s|ComboBox #promptDisplay
+{	
+	color: #666666;
+}
+
+s|DropDownList
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.DropDownListSkin");
+	selectionColor: #555555;
+	rollOverColor: #686868;
+}
+
+s|HScrollBar
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.HScrollBarSkin");
+}
+
+s|HSlider
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.HSliderSkin");
+}
+
+s|NumericStepper
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.NumericStepperSkin");
+}
+
+
+s|NumericStepper #promptDisplay
+{	
+	color: #666666;
+}
+
+s|Panel
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.PanelSkin");
+}
+
+s|RadioButton
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.RadioButtonSkin");
+}
+
+s|Spinner
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.SpinnerSkin");	
+}
+
+s|TabBar
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.TabBarSkin");
+}
+
+s|TextArea
+{	
+	skinClass: ClassReference("flexInc.plastique.skins.hud.TextAreaSkin");
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	paddingBottom: 7;
+}
+
+s|TextArea #promptDisplay
+{	
+	color: #666666;
+}
+
+s|TextInput
+{	
+	skinClass: ClassReference("flexInc.plastique.skins.hud.TextInputSkin");
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	paddingBottom: 7;
+}
+
+s|TextInput #promptDisplay
+{	
+	color: #666666;
+}
+
+s|TitleWindow
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.TitleWindowSkin");
+}
+
+s|ToggleButton
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.ToggleButtonSkin");
+}
+
+s|VScrollBar
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.VScrollBarSkin");
+}
+
+s|VSlider
+{
+	skinClass: ClassReference("flexInc.plastique.skins.hud.VSliderSkin");
+}
+

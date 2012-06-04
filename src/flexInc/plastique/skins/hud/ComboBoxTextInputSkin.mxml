@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+FlexInc. 2011
+http://www.loziosecchi.it/flex_inc
+http://flashden.net/user/loziosecchi
+http://twitter.com//loziosecchi
+-->
+
+<!--- The default skin class for the textInput of a Plastique ComboBox component.  
+
+@see spark.components.ComboBox
+
+@langversion 3.0
+@playerversion Flash 10
+@playerversion AIR 1.5
+@productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009" 
+			 blendMode="normal"
+			 focusIn="onFocusIn();" focusOut="onFocusOut();">
+	
+	<fx:Metadata>
+		<![CDATA[ 
+			/** 
+			* @copy spark.skins.spark.ApplicationSkin#hostComponent
+			*/
+			[HostComponent("spark.components.TextInput")]
+		]]>
+	</fx:Metadata> 
+	
+	<fx:Script fb:purpose="styling">
+		<![CDATA[ 
+			private var paddingChanged:Boolean;
+					
+			/**
+			 *  @private
+			 */
+			override protected function commitProperties():void
+			{
+				super.commitProperties();
+				
+				if (paddingChanged)
+				{
+					updatePadding();
+					paddingChanged = false;
+				}
+			}
+			
+			/**
+			 *  @private
+			 */
+			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+			{
+				if (getStyle("borderVisible") == true)
+				{
+					background.left = background.top = background.right = 1
+					background.bottom = 2;
+					textDisplay.left = textDisplay.right = 1;
+					if (promptDisplay)
+					{
+						promptDisplay.setLayoutBoundsSize(unscaledWidth - 2, unscaledHeight - 2);
+						promptDisplay.setLayoutBoundsPosition(1, 1);
+					}
+				}
+				else
+				{
+					background.left = background.top = background.right = 0
+					background.bottom = 1;
+					textDisplay.left = textDisplay.right = 0;
+					if (promptDisplay)
+					{
+						promptDisplay.setLayoutBoundsSize(unscaledWidth, unscaledHeight);
+						promptDisplay.setLayoutBoundsPosition(0, 0);
+					}
+				}
+							
+				super.updateDisplayList(unscaledWidth, unscaledHeight);
+			}
+			
+			/**
+			 *  @private
+			 */
+			private function updatePadding():void
+			{
+				if (!textDisplay)
+					return;
+				
+				// Push padding styles into the textDisplay
+				var padding:Number;
+				
+				padding = getStyle("paddingLeft");
+				if (textDisplay.getStyle("paddingLeft") != padding)
+					textDisplay.setStyle("paddingLeft", padding);
+				
+				padding = getStyle("paddingTop");
+				if (textDisplay.getStyle("paddingTop") != padding)
+					textDisplay.setStyle("paddingTop", padding);
+				
+				padding = getStyle("paddingRight");
+				if (textDisplay.getStyle("paddingRight") != padding)
+					textDisplay.setStyle("paddingRight", padding);
+				
+				padding = getStyle("paddingBottom");
+				if (textDisplay.getStyle("paddingBottom") != padding)
+					textDisplay.setStyle("paddingBottom", padding);
+				
+				if (!promptDisplay)
+					return;
+				
+				padding = getStyle("paddingLeft");
+				if (promptDisplay.getStyle("paddingLeft") != padding)
+					promptDisplay.setStyle("paddingLeft", padding);
+				
+				padding = getStyle("paddingTop");
+				if (promptDisplay.getStyle("paddingTop") != padding)
+					promptDisplay.setStyle("paddingTop", padding);
+				
+				padding = getStyle("paddingRight");
+				if (promptDisplay.getStyle("paddingRight") != padding)
+					promptDisplay.setStyle("paddingRight", padding);
+				
+				padding = getStyle("paddingBottom");
+				if (promptDisplay.getStyle("paddingBottom") != padding)
+					promptDisplay.setStyle("paddingBottom", padding);
+			}
+			
+			/**
+			 *  @private
+			 */
+			override public function styleChanged(styleProp:String):void
+			{
+				var allStyles:Boolean = !styleProp || styleProp == "styleName";
+				
+				super.styleChanged(styleProp);
+				
+				if (allStyles || styleProp.indexOf("padding") == 0)
+				{
+					paddingChanged = true;
+					invalidateProperties();
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Script>
+		<![CDATA[
+			/** 
+			 * @private 
+			 */     
+			private static const focusExclusions:Array = ["textDisplay", "highlight"];
+			
+			/**
+			 *  @private
+			 */
+			override public function get focusSkinExclusions():Array { return focusExclusions;};
+
+			public function onFocusIn():void
+			{
+				highlight.visible = false;
+			}
+			
+			public function onFocusOut():void
+			{
+				highlight.visible = true;
+			}
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled" stateGroups="disabledStates"/>
+		<s:State name="normalWithPrompt"/>
+		<s:State name="disabledWithPrompt" stateGroups="disabledStates"/>
+	</s:states>
+	
+	<!-- layer 1: highlight -->
+	<!--- @private -->
+	<s:Rect id="highlight" left="0" top="0" right="0" bottom="0" radiusX="2" >
+		<s:fill>
+			<s:SolidColor color="0x666666" alpha=".55" />
+		</s:fill>
+	</s:Rect>
+	
+	<!-- layer 2: border -->
+	<!--- @private -->
+	<s:Rect id="border" left="0" top="0" right="0" bottom="1" radiusX="2" >
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x1b1b1b" />
+				<s:GradientEntry color="0x444444" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<!-- layer 3: fill -->
+	<!--- @private -->
+	<s:Rect id="background" left="1" top="1" right="1" bottom="2" radiusX="2" >
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry id="dotFill0" color="0x515151" />
+				<s:GradientEntry id="dotFill1" color="0x414141" />
+			</s:LinearGradient>
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter angle="90" alpha=".15" color="0x000000" blurX="2" blurY="2" distance="1" strength="1" quality="3" inner="true" />
+		</s:filters>
+	</s:Rect>
+	
+	<!-- text -->
+	<!--- @copy spark.components.supportClasses.SkinnableTextBase#textDisplay -->
+	<s:RichEditableText id="textDisplay"
+						lineBreak="explicit"
+						widthInChars="10" verticalCenter="0"/>
+	<!--- Defines the Label that is used for prompt text. The includeInLayout property is false so the prompt text does not affect measurement. -->
+	<s:Label id="promptDisplay" maxDisplayedLines="1"
+			 verticalAlign="middle"
+			 mouseEnabled="false" mouseChildren="false"
+			 includeIn="normalWithPrompt,disabledWithPrompt" 
+			 includeInLayout="false"
+			 />
+	
+</s:SparkSkin>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+FlexInc. 2011
+http://www.loziosecchi.it/flex_inc
+http://flashden.net/user/loziosecchi
+http://twitter.com//loziosecchi
+-->
+
+<!--- The default skin class for the Plastique Spinner component. The skins for the down and up buttons on the
+Spinner component are defined by the SpinnerDecrementButtonSkin and SpinnerIncrementButtonSkin classes, respectively.  
+
+     @see spark.components.Spinner
+     @see spark.skins.spark.SpinnerDecrementButtonSkin
+     @see spark.skins.spark.SpinnerIncrementButtonSkin
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:fb="http://ns.adobe.com/flashbuilder/2009" alpha.disabled="0.5" minHeight="35" minWidth="30">
+
+    <fx:Metadata>
+    <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.Spinner")]
+    ]]>
+    </fx:Metadata> 
+    
+    <s:states>
+        <s:State name="normal" />
+        <s:State name="disabled" />
+    </s:states>
+    
+	<!-- container -->
+	<!--- @private -->
+	<s:VGroup top="0" left="0" right="0" bottom="0" gap="1">
+	    <!--- The default skin class is SpinnerIncrementButtonSkin.
+	            @copy spark.components.Spinner#incrementButton
+	            @see spark.skins.spark.SpinnerIncrementButtonSkin -->
+	    <s:Button id="incrementButton" width="100%" height="50%" tabEnabled="false" 
+	            skinClass="flexInc.plastique.skins.hud.SpinnerIncrementButtonSkin" /> 
+	            
+	    <!--- The default skin class is SpinnerDecrementButtonSkin. 
+	            @copy spark.components.Spinner#decrementButton
+	            @see spark.skins.spark.SpinnerDecrementButtonSkin -->
+	    <s:Button id="decrementButton" width="100%" height="50%" tabEnabled="false"  
+	            skinClass="flexInc.plastique.skins.hud.SpinnerDecrementButtonSkin" />
+	</s:VGroup>
+
+</s:SparkSkin>

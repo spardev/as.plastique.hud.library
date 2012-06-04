@@ -1,0 +1,5 @@
+-------------
+RELEASE NOTES
+-------------
+
+- 01.00: initial release

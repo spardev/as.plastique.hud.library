@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+FlexInc. 2011
+http://www.loziosecchi.it/flex_inc
+http://flashden.net/user/loziosecchi
+http://twitter.com//loziosecchi
+-->
+
+<!--- The default skin class for the Plastique CheckBox component.  
+
+      @see spark.components.CheckBox
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009" alpha.disabledStates="0.5">
+
+    <fx:Metadata>
+    <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.CheckBox")]
+    ]]>
+    </fx:Metadata> 
+    
+    <fx:Script fb:purpose="styling">        
+		<![CDATA[
+
+			/* Define the symbol fill items that should be colored by the "symbolColor" style. */
+	        static private const symbols:Array = ["checkMarkFill0"];
+	
+	       /**
+	        * @private 
+	        */
+	        override public function get symbolItems():Array {return symbols};
+        
+		]]>
+    </fx:Script>
+    
+    <fx:Script>
+        <![CDATA[
+			import mx.utils.ColorUtil;
+
+			/** 
+             * @private 
+             */     
+            private static const focusExclusions:Array = ["labelDisplay"];
+
+            /**
+             * @private
+             */
+            override public function get focusSkinExclusions():Array { return focusExclusions;};
+        ]]>
+    </fx:Script>
+    
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" stateGroups="overStates" />
+        <s:State name="down" stateGroups="downStates" />
+        <s:State name="disabled" stateGroups="disabledStates" />
+        <s:State name="upAndSelected" stateGroups="selectedStates" />
+        <s:State name="overAndSelected" stateGroups="overStates, selectedStates" />
+        <s:State name="downAndSelected" stateGroups="downStates, selectedStates" />
+        <s:State name="disabledAndSelected" stateGroups="disabledStates, selectedStates" />
+    </s:states>
+    
+	<!-- symbol container -->
+	<!--- @private -->
+    <s:Group verticalCenter="0" width="20" height="20" layoutDirection="ltr">
+
+		<!-- layer 1: main fill -->
+		<!--- @private -->
+		<s:Rect left="0" top="0" right="0" bottom="0" excludeFrom="downStates">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0x555555" ratio="0.0" />
+					<s:GradientEntry color="0x222222" ratio="1.0" />
+				</s:LinearGradient>
+			</s:fill>
+			<s:filters>
+				<s:DropShadowFilter angle="90" alpha="1" color="0x666666" blurX="0" blurY="0" distance="1" strength="3" quality="1" inner="true" />
+				<s:DropShadowFilter angle="90" alpha=".5" color="0x000000" blurX="4" blurY="4" distance="2" strength="1" quality="3" />
+			</s:filters>
+		</s:Rect>
+		
+		<!-- layer 2: down state border -->
+		<!--- @private -->
+		<s:Rect left="0" top="0" right="0" bottom="0" includeIn="downStates">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0x1b1b1b" />
+					<s:GradientEntry color="0x343434" />
+				</s:LinearGradient>
+			</s:fill>
+			<s:filters>
+				<s:DropShadowFilter angle="90" alpha="1" color="0x444444" blurX="0" blurY="0" distance="1" strength="3" quality="1" />
+			</s:filters>
+		</s:Rect>
+		
+		<!-- layer 3: down state fill -->
+		<!--- @private -->
+		<s:Rect left="1" top="1" right="1" bottom="1" includeIn="downStates">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0x515151" ratio="0.0" />
+					<s:GradientEntry color="0x222222" ratio="1.0" />
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		
+		<!-- layer 4: checkmark border -->
+		<!--- @private -->
+		<s:Rect left="5" top="5" right="5" bottom="5" includeIn="selectedStates">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0x1b1b1b" />
+					<s:GradientEntry color="0x444444" />
+				</s:LinearGradient>
+			</s:fill>
+			<s:filters>
+				<s:DropShadowFilter angle="90" alpha=".65" color="0x666666" blurX="0" blurY="0" distance="1" strength="3" quality="1" />
+			</s:filters>
+		</s:Rect>
+		
+		<!-- layer 5: checkmark fill -->
+		<!--- @private -->
+		<s:Rect id="check" left="6" top="6" right="6" bottom="6" includeIn="selectedStates" itemCreationPolicy="immediate">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry id="checkMarkFill0" color="0xe6e6e6" />
+					<s:GradientEntry id="checkMarkFill1" color="{ColorUtil.adjustBrightness(checkMarkFill0.color, -35)}" />
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+
+    </s:Group>
+
+    <!-- Label -->
+    <!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
+    <s:Label id="labelDisplay"
+             textAlign="start"
+             verticalAlign="middle"
+             maxDisplayedLines="1"
+			 alpha.overStates="1"
+			 alpha=".8"
+             left="30" right="0" top="3" bottom="3" verticalCenter="2">
+		<s:filters>
+			<s:DropShadowFilter angle="-90" alpha="1" color="0x000000" blurX="0" blurY="0" distance="1" strength="3" quality="1" />
+		</s:filters>		
+	</s:Label>
+
+</s:SparkSkin>

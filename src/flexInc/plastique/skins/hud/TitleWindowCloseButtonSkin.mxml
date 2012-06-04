@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+FlexInc. 2011
+http://www.loziosecchi.it/flex_inc
+http://flashden.net/user/loziosecchi
+http://twitter.com//loziosecchi
+-->
+
+<!--- The default skin class for the close button of the Plastique TitleWindow component.  
+
+@see spark.skins.spark.TitleWindowSkin     
+@see spark.components.TitleWindow
+
+@langversion 3.0
+@playerversion Flash 10
+@playerversion AIR 1.5
+@productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009" alpha.disabled="0.5">
+	
+	<!-- host component -->
+	<fx:Metadata>
+		<![CDATA[ 
+			/** 
+			* @copy spark.skins.spark.ApplicationSkin#hostComponent
+			*/
+			[HostComponent("spark.components.Button")]
+		]]>
+	</fx:Metadata> 
+	
+	<fx:Script fb:purpose="styling">
+		<![CDATA[ 
+			import mx.utils.ColorUtil;
+
+			/* Define the symbol fill items that should be colored by the "symbolColor" style. */
+			static private const symbols:Array = ["xFill0"];
+			
+			/**
+			 * @private
+			 */
+			override public function get symbolItems():Array {return symbols};
+
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over"/>
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+	
+	<!-- layer 1: main highlight -->
+	<!--- @private -->
+	<s:Rect id="mainHighlight" left="0" right="0" top="0" bottom="0" radiusX="2" excludeFrom="down">
+		<s:fill>
+			<s:SolidColor color="0x777777" />
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter angle="90" alpha=".5" color="0x000000" blurX="5" blurY="5" distance="2" strength="1" quality="3" />
+		</s:filters>
+	</s:Rect>
+	
+	<!-- layer 2: main fill -->
+	<!--- @private -->
+	<s:Rect id="mainFill" left="0" right="0" top="1" bottom="0" radiusX="2" excludeFrom="down">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x555555" ratio="0.0" />
+				<s:GradientEntry color="0x222222" ratio="1.0" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<!-- layer 3: down highlight -->
+	<!--- @private -->
+	<s:Rect id="downHighlight" left="0" right="0" top="1" bottom="0" radiusX="2" includeIn="down">
+		<s:fill>
+			<s:SolidColor color="0x666666" />
+		</s:fill>
+	</s:Rect>
+	
+	<!-- layer 4: down border -->
+	<!--- @private -->
+	<s:Rect id="downBorder" left="0" right="0" top="1" bottom="1" radiusX="2" includeIn="down">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x1b1b1b" />
+				<s:GradientEntry color="0x343434" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<!-- layer 5: down fill -->
+	<!--- @private -->
+	<s:Rect id="downFill" left="1" right="1" top="2" bottom="2" radiusX="2" includeIn="down">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x515151" ratio="0.0" />
+				<s:GradientEntry color="0x222222" ratio="1.0" />
+			</s:LinearGradient>
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter angle="90" alpha=".15" color="0x000000" blurX="2" blurY="2" distance="1" strength="1" quality="3" inner="true" />
+		</s:filters>
+	</s:Rect>
+		
+	<s:Group horizontalCenter="0" verticalCenter="0">
+		<s:Path blendMode="normal" horizontalCenter="0" verticalCenter="0" 
+				data="M7.35938 10.3579 7.23438 10.3579C6.57324 10.3579 5.98242 9.96729 5.47852 9.19678L4.54443 8.04932C3.06738 9.88135 2.9624 9.95459 2.82373 10.0522 2.47656 10.2661 2.16211 10.3579 1.83594 10.3579 1.07227 10.3579 0.218262 9.9165 0.0415039 8.6792L0.03125
+				8.5376C0.03125 8.06885 0.247559 7.58643 1.43066 6.24951L2.24316 5.20264 0.178711 2.61768 0 1.84863 0.043457 1.63477C0.248535 0.629883 0.918457 0.0297852 1.83594 0.0297852 2.72168 0.0297852 3.33008 0.770508 3.71777 1.35352 4.04053 1.73975 4.31738
+				2.07373 4.55029 2.35791 4.90625 1.9165 5.36816 1.33887 5.93652 0.625488L6.0293 0.523926C6.28516 0.280762 6.63086 0.12207 7.08496 0.0385742L7.29395 0 7.50098 0.050293C8.92773 0.395996 9.03906 1.4375 9.03906 1.74854L9.03906 1.92041C9.03906 2.35986
+				8.84766 2.77881 7.71191 4.10254L6.83496 5.20996C9.03906 7.87158 9.03906 8.0376 9.03906 8.43604L9.03906 8.60791C9.03906 9.31299 8.62012 10.1382 7.44531 10.3433L7.35938 10.3579Z">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0x1b1b1b" />
+					<s:GradientEntry color="0x343434" />
+				</s:LinearGradient>
+			</s:fill>
+		</s:Path>
+		<s:Path blendMode="normal" horizontalCenter="0" verticalCenter="0"  
+				data="M3.51562 2.92969C3.78613 2.6123 4.5127 1.71094 5.69531 0.226562 5.80469 0.122559 5.9873 0.046875 6.24219 0 6.75781 0.125 7.01562 0.367188 7.01562 0.726562L7.01562 0.898438C7.01562 1.07568 6.65332 1.58594 5.92969 2.42969L4.52344 4.20312C6.18457
+				6.19336 7.01562 7.26367 7.01562 7.41406L7.01562 7.58594C7.01562 7.99805 6.76074 8.24707 6.25 8.33594L6.21094 8.33594C5.89844 8.33594 5.58301 8.08594 5.26562 7.58594L3.51562 5.4375C2.09375 7.21387 1.33105 8.1377 1.22656 8.21094 1.09082 8.29395
+				0.953125 8.33594 0.8125 8.33594L0.789062 8.33594C0.34668 8.33594 0.0859375 8.0625 0.0078125 7.51562 0.0078125 7.29688 0.390625 6.75586 1.15625 5.89062L2.49219 4.17188 0.078125 1.14844 0 0.8125C0.109375 0.276367 0.379883 0.0078125 0.8125 0.0078125
+				1.12988 0.0078125 1.48926 0.31543 1.89062 0.929688 2.74512 1.95068 3.28613 2.61719 3.51562 2.92969Z">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry id="xFill0" color="0x515151" />
+					<s:GradientEntry id="xFill1" color="{ColorUtil.adjustBrightness(xFill0.color, -15)}" />
+				</s:LinearGradient>
+			</s:fill>
+		</s:Path>
+		<s:filters>
+			<s:DropShadowFilter angle="90" alpha=".5" color="0x666666" blurX="0" blurY="0" distance="1" strength="3" quality="1" />
+		</s:filters>
+	</s:Group>
+</s:SparkSkin>

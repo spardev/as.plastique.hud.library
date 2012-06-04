@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses/>
+  <includeResources>
+    <resourceEntry destPath="assets/fonts/comfortaa/Comfortaa-Light.ttf" sourcePath="assets/fonts/comfortaa/Comfortaa-Light.ttf"/>
+    <resourceEntry destPath="assets/fonts/comfortaa/Comfortaa-Bold.ttf" sourcePath="assets/fonts/comfortaa/Comfortaa-Bold.ttf"/>
+    <resourceEntry destPath="assets/fonts/comfortaa/Comfortaa-Regular.ttf" sourcePath="assets/fonts/comfortaa/Comfortaa-Regular.ttf"/>
+    <resourceEntry destPath="plastiqueHUDSet.css" sourcePath="plastiqueHUDSet.css"/>
+  </includeResources>
+  <namespaceManifests/>
+</flexLibProperties>
